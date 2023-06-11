@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up page</title>
+</head>
+<body>
+  <h1>Sign up Page</h1>
+  <form action="/signup" method="post">  <!--여기서 action 수정-->
+    <label for="user_id">ID:</label><br>
+    <input id="user_id" type="text" name="id" value=""><br>
+
+    <label for="user_pwd">PASSWORD:</label><br>
+    <input id="user_pwd" type="text" name="password" value="****"><br>
+    <label for="role">Choose a role</label>
+    <select name="roles" id="role">
+      <option value="tutee">tutee</option>
+      <option value="tutor">tutor</option>
+    </select><br><br>
+    <input type="submit" name="send" value="sign up">
+  </form>
+</body>
+</html>

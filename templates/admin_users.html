@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Users</h1>
+
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>password</th>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <form action="/admin_pages" method="post">
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

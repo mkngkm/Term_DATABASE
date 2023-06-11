@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my Info</title>
+</head>
+<body>
+
+{% if role == 'tutor' %}
+    <h1>My lecture</h1>
+    <table border="1">
+    <thead>
+        <th>subject</th>
+        <th>lecture name</th>
+        <th>tutee</th>
+        <th>price</th>
+    </thead>
+
+    <tbody>
+        {% for lecture in lectures %}
+        <tr>
+            <td>{{ lecture[0] }}</td>
+            <td>{{ lecture[1] }}</td>
+            <td>{{ lecture[2] }}</td>
+            <td>{{ lecture[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if role == 'tutee' %}
+    <h1>My lecture</h1>
+{% else %}
+    <h1>Registered lecture</h1>
+{% endif %}
+<table border="1">
+    <thead>
+        <th>subject</th>
+        <th>lecture name</th>
+        <th>tutor</th>
+        <th>price</th>
+    </thead>
+
+    <tbody>
+        {% for lecture in my_lecture %}
+        <tr>
+            <td>{{ lecture[0] }}</td>
+            <td>{{ lecture[1] }}</td>
+            <td>{{ lecture[2] }}</td>
+            <td>{{ lecture[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

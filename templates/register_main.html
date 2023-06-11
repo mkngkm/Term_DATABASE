@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lectures</title>
+</head>
+<body>
+{% if user_info[0] == 'admin' %}
+  <div>Admin Function</div>
+    <form action="/admin_function" method="post">
+        <input type="submit" name="send" value="users info">
+        <input type="submit" name="send" value="trades info">
+    </form><br>
+{% endif %}
+
+
+<h3>View lecture</h3>
+<form action="/print_my_info" method="post">
+    <input type="submit" name="send" value="my info" />
+    <input type="submit" name="send" value="my wishlist" />
+    <input type="hidden" name="id" value={{user_info[0]}} />
+    <input type="hidden" name="role" value={{user_info[3]}} />
+</form>
+<div>==============================================================================</div>
+<table border="1">
+    <thead>
+        <th>popular subject</th>
+        <th>popular lecture</th>
+        <th>popular tutor</th>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ popular[0] }}</td>
+            <td>{{ popular[1] }}</td>
+            <td>{{ popular[2] }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+<form action="/return" method="post"> <!--로그아웃 이게 맞는지 모르겠음 아마 메인으로 돌아가는 거일듯-->
+    <h1>User Info</h1>
+    <div>
+      current user: {{user_info[0]}}/<input type="submit" name="send" value="Logout">
+    </div>
+    <div>credit: {{user_info[1]}}</div>
+    <div>rating: {{user_info[2]}}</div>
+</form>
+
+<h1>Lectures</h1>
+
+<form action="/plus_lecture" method="post">
+    <input type="hidden" name="id" value={{user_info[0]}} />
+    {% if user_info[3] == 'tutor' %}
+        <input type="submit" name="send" value="add"/>
+    {% endif %}
+</form>
+<table border="1">
+    <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+        <th></th>
+        <th></th>
+    </thead>
+
+    <tbody>
+        {% for lec in lecture %}
+        <tr>
+            <form action="/each_lecture" method="post">
+            <td>{{ lec[0] }}</td><input type="hidden" name="code" value={{lec[0]}} />
+            <td>{{ lec[1] }}</td><input type="hidden" name="name" value={{lec[1]}} />
+            <td>{{ lec[2] }}</td><input type="hidden" name="price" value={{lec[2]}} />
+            <td>{{ lec[3] }}</td><input type="hidden" name="tutor" value={{lec[3]}} />
+            <td><input type="submit" name="send" value="register" /></td>
+            <td><input type="submit" name="send" value="add to wish" /></td>
+            <input type="hidden" name="id" value={{user_info[0]}} />
+            </form>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

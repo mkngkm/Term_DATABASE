@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishlist</title>
+</head>
+<body>
+  <h1>Wishlist</h1>
+
+    <table border="2">
+        <thead>
+            <th>tutor</th>
+            <th>code</th>
+            <th>lecture_name</th>
+            <th>lecture_price</th>
+            <th></th>
+            <th></th>
+        </thead>
+
+        <tbody>
+            {% for wish in wishlist %}
+            <tr>
+                <form action="/each_lecture" method="post">
+                <td>{{ wish[1] }}</td><input type="hidden" name="tutor" value={{ wish[1] }} />
+                <td>{{ wish[2] }}</td><input type="hidden" name="code" value={{ wish[2] }} />
+                <td>{{ wish[3] }}</td><input type="hidden" name="name" value={{ wish[3] }} />
+                <td>{{ wish[4] }}</td><input type="hidden" name="price" value={{ wish[4] }} />
+
+                <input type="hidden" name="id" value={{ id }} />
+                <td><input type="submit" name="send" value="register" /></td>
+                <td><input type="submit" name="send" value="del" /></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </form>
+</body>
+</html>

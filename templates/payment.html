@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+</head>
+<body>
+  <h3>Lecture INFO</h3>
+    <table border="2">
+        <thead>
+            <th>code</th>
+            <th>name</th>
+            <th>price</th>
+            <th>tutor</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ lecture[0] }}</td>
+                <td>{{ lecture[1] }}</td>
+                <td>{{ lecture[2] }}</td>
+                <td>{{ lecture[3] }}</td>
+            </tr>
+        </tbody>
+    </table>
+  <br><br>
+
+  <form action="/lecture_pay" method="post">
+    <div>
+        <div>Your credit: {{user_info[1]}}</div>
+        <div>Your rating: {{user_info[2]}}</div>
+    </div>
+    <br>
+    <div>
+        <div>Total price: {{ price }}</div><input type="hidden" name="price" value={{ price }}>
+        <div>Discount price: {{ discount_price }}</div>
+    </div>
+    <div>===========================================</div>
+    <div>Final price: {{ final }}</div><input type="hidden" name="final" value={{ final }}>
+
+    <input type="hidden" name="code" value={{lecture[0]}} />
+    <input type="hidden" name="name" value={{lecture[1]}} />
+    <input type="hidden" name="price" value={{lecture[2]}} />
+    <input type="hidden" name="tutor" value={{ lecture[3] }}>
+
+    <input type="hidden" name="id" value={{user_info[0]}}>
+    <input type="hidden" name="role" value={{user_info[3]}}>
+
+    <input type="submit" name="send" value="confirm"><br>
+    <input type="submit" name="send" value="cancel">
+  </form>
+
+</body>
+</html>

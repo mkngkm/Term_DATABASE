@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+
+    <h1>Trades</h1>
+
+    <table border="1">
+        <thead>
+            <th>tutee</th>
+            <th>tutor</th>
+            <th>code</th>
+            <th>lecture_name</th>
+            <th>lecture_price</th>
+            <th></th>
+        </thead>
+
+        <tbody>
+            {% for trade in trades %}
+            <tr>
+                <form action="/admin_pages" method="post">
+                <td>{{ trade[0] }}</td><input type="hidden" name="tutee" value={{ trade[0] }} />
+                <td>{{ trade[1] }}</td><input type="hidden" name="tutor" value={{ trade[1] }} />
+                <td>{{ trade[2] }}</td><input type="hidden" name="code" value={{ trade[2] }} />
+                <td>{{ trade[3] }}</td><input type="hidden" name="name" value={{ trade[3] }} />
+                <td>{{ trade[4] }}</td><input type="hidden" name="price" value={{ trade[4] }} />
+                <td><input type="submit" name="send" value="del" /></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

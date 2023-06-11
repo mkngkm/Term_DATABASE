@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Lecture</title>
+</head>
+<body>
+<h3>subject list</h3>
+<table border="1">
+        <tbody>
+            {% for subject in subjects %}
+            <tr>
+                <td>{{ subject[0] }}</td>
+                <td>{{ subject[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+<form action="/add_lecture" method="post">
+    <label for="code">Code:</label><br>
+    <input id="code" type="text" name="code" ><br>
+
+    <label for="name">Name:</label><br>
+    <input id="name" type="text" name="name" ><br><br>
+
+    <label for="price">Price:</label><br>
+    <input id="price" type="text" name="price" ><br>
+    <span>꼭 1000단위로 작성해주세요. 어길 시 결제에 오류가 있을 수 있습니다.그에 따른 불이익은 책임지지 않습니다.</span><br><br>
+
+    <input type="hidden" name="tutor" value={{tutor}} />
+
+    <input type="submit" name="send" value="add"><br>
+    <input type="submit" name="send" value="cancel">
+
+</form>
+</body>
+</html>
